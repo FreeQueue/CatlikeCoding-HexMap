@@ -16,16 +16,14 @@ public class HexGrid : MonoBehaviour
 	private HexCell[] cells;
 
 	private Canvas gridCanvas;
-
 	private HexMesh hexMesh;
 
 	#region Event Functions
 	private void Awake() {
 		gridCanvas = GetComponentInChildren<Canvas>();
 		hexMesh = GetComponentInChildren<HexMesh>();
-		gridCanvas = GetComponentInChildren<Canvas>();
-		cells = new HexCell[height * width];
 
+		cells = new HexCell[height * width];
 		for (int z = 0, i = 0; z < height; z++) {
 			for (int x = 0; x < width; x++) {
 				CreateCell(x, z, i++);
@@ -59,6 +57,17 @@ public class HexGrid : MonoBehaviour
 		cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
 		cell.color = defaultColor;
 
+		if (x > 0) cell.SetNeighbor(HexDirection.W, cells[i - 1]);
+		if (z > 0) {
+			if ((z & 1) == 0) {
+				cell.SetNeighbor(HexDirection.SE, cells[i - width]);
+				if (x > 0) cell.SetNeighbor(HexDirection.SW, cells[i - width - 1]);
+			}
+			else {
+				cell.SetNeighbor(HexDirection.SW, cells[i - width]);
+				if (x < width - 1) cell.SetNeighbor(HexDirection.SE, cells[i - width + 1]);
+			}
+		}
 		Text label = Instantiate(cellLabelPrefab, gridCanvas.transform, false);
 		label.rectTransform.anchoredPosition =
 			new Vector2(position.x, position.z);

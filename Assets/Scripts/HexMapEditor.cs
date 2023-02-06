@@ -17,16 +17,16 @@ public class HexMapEditor : MonoBehaviour
 	}
 
 	private void Update() {
-		if (Input.GetMouseButtonDown(0)) HandleInput();
+		if (Input.GetMouseButtonDown(0) &&
+			!EventSystem.current.IsPointerOverGameObject())
+			HandleInput();
 	}
 	#endregion
 
 	private void HandleInput() {
 		Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
-		if (Physics.Raycast(inputRay, out hit) &&
-			!EventSystem.current.IsPointerOverGameObject())
-			hexGrid.ColorCell(hit.point, activeColor);
+		if (Physics.Raycast(inputRay, out hit)) hexGrid.ColorCell(hit.point, activeColor);
 	}
 
 	public void SelectColor(int index) {
