@@ -25,7 +25,6 @@ public class HexMapEditor : MonoBehaviour
 	}
 	#endregion
 
-	
 	private void HandleInput() {
 		Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
