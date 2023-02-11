@@ -15,23 +15,42 @@ public class HexMapEditor : MonoBehaviour
 	private bool applyColor;
 	private bool applyElevation = true;
 	private int brushSize;
+	private HexDirection dragDirection;
+	private bool isDrag;
+	private HexCell previousCell;
+
+	private OptionalToggle riverMode = OptionalToggle.Ignore;
 
 	#region Event Functions
 	private void Awake() {
-		SelectColor(0);
+		SelectColor(-1);
 	}
 
 	private void Update() {
-		if (Input.GetMouseButtonDown(0) &&
+		if (Input.GetMouseButton(0) &&
 			!EventSystem.current.IsPointerOverGameObject())
 			HandleInput();
+		else
+			previousCell = null;
 	}
 	#endregion
 
 	private void HandleInput() {
 		Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
-		if (Physics.Raycast(inputRay, out hit)) EditCells(hexGrid.GetCell(hit.point));
+		if (Physics.Raycast(inputRay, out hit)) {
+			HexCell currentCell = hexGrid.GetCell(hit.point);
+
+			if (previousCell && previousCell != currentCell)
+				ValidateDrag(currentCell);
+			else
+				isDrag = false;
+			EditCells(currentCell);
+			previousCell = currentCell;
+		}
+		else {
+			previousCell = null;
+		}
 	}
 
 	public void SetElevation(float elevation) {
@@ -49,6 +68,10 @@ public class HexMapEditor : MonoBehaviour
 
 	public void SetBrushSize(float size) {
 		brushSize = (int)size;
+	}
+
+	public void SetRiverMode(int mode) {
+		riverMode = (OptionalToggle)mode;
 	}
 
 	public void ShowUI(bool visible) {
@@ -75,6 +98,34 @@ public class HexMapEditor : MonoBehaviour
 		if (cell) {
 			if (applyColor) cell.Color = activeColor;
 			if (applyElevation) cell.Elevation = activeElevation;
+			if (riverMode == OptionalToggle.No) {
+				cell.RemoveRiver();
+			}
+			else if (isDrag && riverMode == OptionalToggle.Yes) {
+				HexCell otherCell = cell.GetNeighbor(dragDirection.Opposite());
+				if (otherCell) otherCell.SetOutgoingRiver(dragDirection);
+			}
 		}
 	}
+
+	private void ValidateDrag(HexCell currentCell) {
+		for (
+			dragDirection = HexDirection.NE;
+			dragDirection <= HexDirection.NW;
+			dragDirection++
+		) {
+			if (previousCell.GetNeighbor(dragDirection) == currentCell) {
+				isDrag = true;
+				return;
+			}
+		}
+		isDrag = false;
+	}
+
+	#region Nested type: ${0}
+	private enum OptionalToggle
+	{
+		Ignore, Yes, No,
+	}
+	#endregion
 }
