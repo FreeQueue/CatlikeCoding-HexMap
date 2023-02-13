@@ -453,13 +453,13 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 203.33382, y: -446.77014, z: 229.87099}
+    m_Target: {x: 9.074074, y: 18.570993, z: -4.489773}
     speed: 2
-    m_Value: {x: 203.33382, y: -446.77014, z: 229.87099}
+    m_Value: {x: 9.074074, y: 18.570993, z: -4.489773}
   m_RenderMode: 0
   m_CameraMode:
-    drawMode: 2
-    name: Shaded Wireframe
+    drawMode: 0
+    name: Shaded
     section: Shading Mode
   m_ValidateTrueMetals: 0
   m_DoValidateTrueMetals: 0
@@ -502,13 +502,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.4933789, y: -0.2816861, z: 0.17248662, w: -0.8048827}
+    m_Target: {x: -0.42558113, y: 0.006527449, z: -0.003433927, w: -0.90510786}
     speed: 2
-    m_Value: {x: -0.4932907, y: -0.28163573, z: 0.17245579, w: -0.8047388}
+    m_Value: {x: -0.4268486, y: 0.007877429, z: -0.004083323, w: -0.9042796}
   m_Size:
-    m_Target: 291.26846
+    m_Target: 9.013878
     speed: 2
-    m_Value: 291.26846
+    m_Value: 561.4061
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -644,9 +644,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7c4f0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 3ae4ffff34fbffffee4e0000
+      m_SelectedIDs: 5c81ffff
+      m_LastClickedID: -32420
+      m_ExpandedIDs: dcd0ffffe2d0ffffaaf3ffffc2f7ffff34fbffff9a670000c86800004c6a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -737,22 +737,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Materials/Terrain
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Materials/Terrain
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Unity\CatlikeCoding\CatlikeCoding-HexMap
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 704f0000
-    m_LastClickedID: 20336
-    m_ExpandedIDs: 00000000684f000000ca9a3b
+    m_SelectedIDs: ba640000
+    m_LastClickedID: 25786
+    m_ExpandedIDs: 00000000184e00001e4e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -780,7 +780,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: e6410000
     m_LastClickedID: 16870
-    m_ExpandedIDs: 00000000684f0000
+    m_ExpandedIDs: 00000000184e00001e4e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -805,24 +805,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7c4f0000
-    m_LastClickedInstanceID: 20348
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 5c81ffff
+    m_LastClickedInstanceID: -32420
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300009c520000285000004cae010000000000dc470000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Hex Grid Chunk
-      m_OriginalName: Hex Grid Chunk
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 20244
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
